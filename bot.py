@@ -8,6 +8,10 @@ intents.message_content = True
 
 bot = commands.Bot(command_prefix="!", intents=intents)
 
+allowed_channels = [
+    1467842579990184037
+]
+
 banned_words = [
     "hi", "hello", "你好", "早安", "晚安", "謝謝", "thanks", "ok",
     "哈哈", "lol", "?", "!", "笑死",
@@ -45,6 +49,9 @@ async def on_message(message):
     if message.author.bot:
         return
 
+    if message.channel.id not in allowed_channels:
+        return
+
     content = message.content.lower()
 
     for word in appeal_words:
@@ -62,3 +69,4 @@ async def on_message(message):
     await bot.process_commands(message)
 
 bot.run(os.getenv("DISCORD_TOKEN"))
+
