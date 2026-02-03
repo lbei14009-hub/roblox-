@@ -9,7 +9,7 @@ intents.message_content = True
 bot = commands.Bot(command_prefix="!", intents=intents)
 
 allowed_channels = [
-    1467175336428175442
+    1467842579990184037
 ]
 
 banned_words = [
@@ -69,5 +69,6 @@ async def on_message(message):
     await bot.process_commands(message)
 
 bot.run(os.getenv("DISCORD_TOKEN"))
+
 
 
